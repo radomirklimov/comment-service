@@ -33,25 +33,22 @@ class ComController(
         return ResponseEntity.ok(comments)
     }
 
-    @DeleteMapping("/delete")  
+    @DeleteMapping("/delete")
     fun delete(@RequestBody comment: Comment): ResponseEntity<String>{
-        if (comService.isExist(comment.id)){
+        if (!comService.isExist(comment.id)){
             return ResponseEntity.badRequest().build()
         }
 
         comService.remove(comment)
 
-        if (comService.isExist(comment.id)){
-            return ResponseEntity.badRequest().body("failure")
-        }
-
         return ResponseEntity.ok("deleted successfully")
     }
 
-    @GetMapping("/is-exist")
-    fun isExist(@RequestBody comment: Comment): Boolean{
-        return comService.isExist(comment.id)
+//    @GetMapping("/is-exist")
+//    fun isExist(@RequestBody comment: Comment): Boolean{
+//        return comService.isExist(comment.id)
+//
+//    }
 
-    }
-
+}
 }
