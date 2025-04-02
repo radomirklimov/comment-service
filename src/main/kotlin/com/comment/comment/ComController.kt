@@ -44,11 +44,4 @@ class ComController(
 
         return ResponseEntity.ok("deleted successfully")
     }
-
-//    @GetMapping("/is-exist")
-//    fun isExist(@RequestBody comment: Comment): Boolean{
-//        return comService.isExist(comment.id)
-//
-//    }
-
 }
